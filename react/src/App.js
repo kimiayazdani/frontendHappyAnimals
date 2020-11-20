@@ -60,9 +60,9 @@ export default class App extends Component {
       });
   }
 
-  componentDidMount() {
-    this.checkLoginStatus();
-  }
+  // componentDidMount() {
+  //   this.checkLoginStatus();
+  // }
 
     handleLogout() {
     this.setState({

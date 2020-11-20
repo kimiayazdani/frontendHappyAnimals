@@ -44,18 +44,23 @@ class Login extends Component {
                   user: "", 
                   pass: "", 
                   logged_in: res.data.logged_in,
-                  error_message: res.data.error,
               }); 
 
           }) 
-          .catch((err) => {}); 
+          .catch((err) => {
+            
+              this.setState({ 
+                  error_message:err.response.data.error
+               });
+            
+          }); 
   }; 
   render() {
     return (
       <div className="App">
       
 
-        <SideMenu redirectto={2} namepage={'Login'}/>
+        <SideMenu redirectto={3} namepage={'Login'}/>
         <Grid textAlign="center" verticalAlign="middle">
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" color="teal" textAlign="center">
@@ -91,10 +96,8 @@ class Login extends Component {
             </Form>
             <Message>
               جدیدید؟ <a href="/SignUp">به ما بپیوندید</a>
-
+              <p background-color="coral"> error message: {this.state.error_message? this.state.error_message : "none"} </p>
             </Message>
-            <p> logged_in: {this.state.logged_in === 0 ? "NOT LOGGED IN" : "LOGGED IN"} </p>
-            <p> error message: {this.state.error_message} </p>
           </Grid.Column>
         </Grid>
       </div>

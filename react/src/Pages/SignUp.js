@@ -112,8 +112,9 @@ class SignUp extends Component {
             </Form>
             <Message>
               اکانت دارید؟ <a href="/">وارد شوید</a>
+              <p > error message: {this.state.error_message? this.state.error_message: "none"} </p>
             </Message>
-            <p> error message: {this.state.error_message} </p>
+            
           </Grid.Column>
         </Grid>
       </div>

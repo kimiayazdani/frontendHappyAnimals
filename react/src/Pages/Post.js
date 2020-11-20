@@ -61,9 +61,9 @@ class Post extends Component {
                       <div className="header" > { this.state.title }</div>
                       <Image src={ this.state.image } className={"ui small circular image centered"} />{""}
                       <div>
-                          <a className="ui blue image label">{ this.state.labels[0] }</a>
-                          <a className="ui teal image label">{ this.state.labels[1] }</a>
-                          <a className="ui yellow image label">{ this.state.labels[2] }</a></div>
+                          {this.state.labels[0] && <a className="ui blue image label">{ this.state.labels[0] }</a>}
+                          {this.state.labels[1] && <a className="ui teal image label">{ this.state.labels[1] }</a>}
+                          {this.state.labels[2] && <a className="ui yellow image label">{ this.state.labels[2] }</a>} </div>
                       {this.props.hideit !== 1 &&
                       <div className="ui aligned container">
                           <p>{ this.state.description }</p>
