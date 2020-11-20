@@ -44,7 +44,7 @@ class Login extends Component {
                   user: "", 
                   pass: "", 
                   logged_in: res.data.logged_in,
-                  error_message: res.data.error_message,
+                  error_message: res.data.error,
               }); 
 
           }) 

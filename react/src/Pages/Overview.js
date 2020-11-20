@@ -76,12 +76,10 @@ class overview extends Component {
               description: this.state.description,
           })
           .then((res) => { 
-              this.setState({ 
-                  title: "",
-                  image: "",
-                  labels: "",
-                  description: "",
-              });
+            for (var i = 0; i < res.data.list.length; i++) {
+              this.state.list.push({title: res.data.list[i].title, description: res.data.list[i].description,
+               image:res.data.list[i].image, labels: res.data.list[i].labels})
+            }
           }) 
           .catch((err) => {}); 
   }; 

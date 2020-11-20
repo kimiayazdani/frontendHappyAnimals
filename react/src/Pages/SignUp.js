@@ -23,6 +23,7 @@ class SignUp extends Component {
     pass:"",
     number:"",
     name:"",
+    error_message:"",
   };
   handleInput = (e) => { 
         console.log("something")
@@ -46,7 +47,9 @@ class SignUp extends Component {
                   pass: "", 
                   name: "",
                   number: "",
+                  error_message: res.data.error_message,
               }); 
+
           }) 
           .catch((err) => {}); 
   }; 
@@ -107,6 +110,7 @@ class SignUp extends Component {
             <Message>
               اکانت دارید؟ <a href="/">وارد شوید</a>
             </Message>
+            <p> error message: {this.state.error_message} </p>
           </Grid.Column>
         </Grid>
       </div>
