@@ -67,19 +67,22 @@ class overview extends Component {
   componentDidMount() {
     this.handleSubmit();
   }
-  handleSubmit = (e) => { 
-      e.preventDefault(); 
-
+  handleSubmit = () => { 
       axios 
-          .get("http://localhost:8000/api/v1/adoption/post")
-          .then((res) => { 
+          .get("http://localhost:8000/api/v1/adoption/post/")
+          .then((res) => {
+            var a = this.state.list
             for (var i = 0; i < res.data.length; i++) {
-              this.state.list.push({title: res.data[i].title,
+              a.push({title: res.data[i].title,
                image:res.data[i].pet_image, labels: res.data[i].tags})
             }
+          console.log(a)
+          this.setState({
+            list: a
+          })
           }) 
           .catch((err) => {}); 
-  }; 
+        }; 
   render() {
     var indents = [];
   for (var i = 0; i < this.state.list.length; i++) {
