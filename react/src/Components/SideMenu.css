@@ -1,0 +1,7 @@
+.hidden { display:none; }
+
+.menu {
+  position: relative;
+  top:100px;
+  left:30px;
+}
