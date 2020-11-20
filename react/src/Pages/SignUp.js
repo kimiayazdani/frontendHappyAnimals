@@ -47,11 +47,14 @@ class SignUp extends Component {
                   pass: "", 
                   name: "",
                   number: "",
-                  error_message: res.data.error_message,
               }); 
 
           }) 
-          .catch((err) => {}); 
+          .catch((err) => {
+                this.setState({ 
+                  error_message:err.response.data.error_message 
+               });
+            }); 
   }; 
   render() {
     return (
