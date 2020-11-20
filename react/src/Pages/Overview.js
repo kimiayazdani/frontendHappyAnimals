@@ -64,21 +64,18 @@ class overview extends Component {
                 }} />
             }
         }
-
+  componentDidMount() {
+    this.handleSubmit();
+  }
   handleSubmit = (e) => { 
       e.preventDefault(); 
 
       axios 
-          .post("http://localhost:8000/api/v1/post/overview", {
-              title: this.state.title,
-              image: this.state.image,
-              labels: this.state.labels,
-              description: this.state.description,
-          })
+          .get("http://localhost:8000/api/v1/adoption/post")
           .then((res) => { 
-            for (var i = 0; i < res.data.list.length; i++) {
-              this.state.list.push({title: res.data.list[i].title, description: res.data.list[i].description,
-               image:res.data.list[i].image, labels: res.data.list[i].labels})
+            for (var i = 0; i < res.data.length; i++) {
+              this.state.list.push({title: res.data[i].title,
+               image:res.data[i].pet_image, labels: res.data[i].tags})
             }
           }) 
           .catch((err) => {}); 
