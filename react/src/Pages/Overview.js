@@ -74,7 +74,7 @@ class overview extends Component {
             var a = this.state.list
             for (var i = 0; i < res.data.length; i++) {
               a.push({title: res.data[i].title,
-               image:res.data[i].pet_image, labels: res.data[i].tags})
+               image:res.data[i].pet_image? res.data[i].pet_image: "./../static/images/HappyAnimals.png", labels: res.data[i].tags})
             }
           console.log(a)
           this.setState({
