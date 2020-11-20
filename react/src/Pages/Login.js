@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios"; 
 import {Logger, ConsoleLogger} from 'react-console-logger';
 import SideMenu from './../Components/SideMenu';
+import { Redirect } from 'react-router';
 
 import "semantic-ui-css/semantic.min.css";
 
@@ -22,6 +23,7 @@ class Login extends Component {
     user:"",
     pass:"",
     logged_in: 0,
+    error_message: "",
   };
   handleInput = (e) => { 
         console.log("something")
@@ -42,6 +44,7 @@ class Login extends Component {
                   user: "", 
                   pass: "", 
                   logged_in: res.data.logged_in,
+                  error_message: res.data.error_message,
               }); 
 
           }) 
@@ -83,13 +86,15 @@ class Login extends Component {
                 <Button type="submit" color="teal" fluid size="large">
                   وارد شوید
                 </Button>
+                {this.state.logged_in === 1 && <Redirect to="/Posts" />}
               </Segment>
             </Form>
             <Message>
               جدیدید؟ <a href="/SignUp">به ما بپیوندید</a>
 
             </Message>
-            <p> logged_in: {this.state.logged_in} </p>
+            <p> logged_in: {this.state.logged_in === 0 ? "NOT LOGGED IN" : "LOGGED IN"} </p>
+            <p> error message: {this.state.error_message} </p>
           </Grid.Column>
         </Grid>
       </div>
@@ -98,3 +103,4 @@ class Login extends Component {
 }
 
 export default Login;
+
